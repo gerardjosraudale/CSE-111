@@ -34,9 +34,8 @@ def make_sentence():
     determiner = get_determiner()
     noun = get_noun()
     verb = get_verb()
-    prepositional_phrase1 = get_prepositional_phrase()
-    prepositional_phrase2 = get_prepositional_phrase()
-    return f"{determiner} {noun} {verb} {prepositional_phrase1} {prepositional_phrase2}."
+    prepositional_phrase = get_prepositional_phrase()
+    return f"{determiner} {noun} {verb} {prepositional_phrase}."
 
 # Main function
 def main():
