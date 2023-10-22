@@ -35,6 +35,7 @@ from water_flow import jr_pressure_loss_from_fittings, jr_reynolds_number, jr_pr
 
 def jr_test_pressure_loss_from_fittings():
     # Test case 1
+     # Test cases for pressure loss from fittings
     fluid_velocity = 0
     quantity_fittings = 3
     expected_pressure_loss = 0.0
@@ -76,6 +77,7 @@ def jr_test_pressure_loss_from_fittings():
 
 def jr_test_reynolds_number():
     # Test case 1
+    # Test cases for Reynolds number
     hydraulic_diameter = 0.048692
     fluid_velocity = 0
     expected_reynolds_number = 0.0
