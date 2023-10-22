@@ -30,3 +30,90 @@ def test_jr_pressure_loss_from_pipe():
 
 if __name__ == "__main__":
     pytest.main(["-v", "--tb=line", "-rN", __file__])
+
+from water_flow import jr_pressure_loss_from_fittings, jr_reynolds_number, jr_pressure_loss_from_pipe_reduction
+
+def jr_test_pressure_loss_from_fittings():
+    # Test case 1
+    fluid_velocity = 0
+    quantity_fittings = 3
+    expected_pressure_loss = 0.0
+    tolerance = 0.001
+    result = jr_pressure_loss_from_fittings(fluid_velocity, quantity_fittings)
+    assert abs(result - expected_pressure_loss) < tolerance
+
+    # Test case 2
+    fluid_velocity = 1.65
+    quantity_fittings = 0
+    expected_pressure_loss = 0.0
+    tolerance = 0.001
+    result = jr_pressure_loss_from_fittings(fluid_velocity, quantity_fittings)
+    assert abs(result - expected_pressure_loss) < tolerance
+
+    # Test case 3
+    fluid_velocity = 1.65
+    quantity_fittings = 2
+    expected_pressure_loss = -0.109
+    tolerance = 0.001
+    result = jr_pressure_loss_from_fittings(fluid_velocity, quantity_fittings)
+    assert abs(result - expected_pressure_loss) < tolerance
+
+    # Test case 4
+    fluid_velocity = 1.75
+    quantity_fittings = 2
+    expected_pressure_loss = -0.122
+    tolerance = 0.001
+    result = jr_pressure_loss_from_fittings(fluid_velocity, quantity_fittings)
+    assert abs(result - expected_pressure_loss) < tolerance
+
+    # Test case 5
+    fluid_velocity = 1.75
+    quantity_fittings = 5
+    expected_pressure_loss = -0.306
+    tolerance = 0.001
+    result = jr_pressure_loss_from_fittings(fluid_velocity, quantity_fittings)
+    assert abs(result - expected_pressure_loss) < tolerance
+
+def jr_test_reynolds_number():
+    # Test case 1
+    hydraulic_diameter = 0.048692
+    fluid_velocity = 0
+    expected_reynolds_number = 0.0
+    tolerance = 1
+    result = jr_reynolds_number(hydraulic_diameter, fluid_velocity)
+    assert abs(result - expected_reynolds_number) < tolerance
+
+    # Test case 2
+    hydraulic_diameter = 0.048692
+    fluid_velocity = 1.65
+    expected_reynolds_number = 80069
+    tolerance = 1
+    result = jr_reynolds_number(hydraulic_diameter, fluid_velocity)
+    assert abs(result - expected_reynolds_number) < tolerance
+
+    # Test case 3
+    hydraulic_diameter = 0.048692
+    fluid_velocity = 1.75
+    expected_reynolds_number = 84922
+    tolerance = 1
+    result = jr_reynolds_number(hydraulic_diameter, fluid_velocity)
+    assert abs(result - expected_reynolds_number) < tolerance
+
+    # Test case 4
+    hydraulic_diameter = 0.28687
+    fluid_velocity = 1.65
+    expected_reynolds_number = 471729
+    tolerance = 1
+    result = jr_reynolds_number(hydraulic_diameter, fluid_velocity)
+    assert abs(result - expected_reynolds_number) < tolerance
+
+    # Test case 5
+    hydraulic_diameter = 0.28687
+    fluid_velocity = 1.75
+    expected_reynolds_number = 500318
+    tolerance = 1
+    result = jr_reynolds_number(hydraulic_diameter, fluid_velocity)
+    assert abs(result - expected_reynolds_number) < tolerance
+
+jr_test_pressure_loss_from_fittings()
+jr_test_reynolds_number()
